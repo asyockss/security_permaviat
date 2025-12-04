@@ -15,6 +15,12 @@
 	
 	if($id != -1) {
 		$_SESSION['user'] = $id;
+
+		$ip = $_SERVER["REMOTE_ADDR"];
+		$dateStart = date("Y-m-d H:i:s");
+
+		$Sql = "INSERT INTO `session`(`idUser`, `ip`, `dateStart`, `dateNow`) VALUES ({$id}, '{$ip}', '{$dateStart}', '{$dateStart}')";
+		$mysqli->query($Sql);
 	}
 	echo md5(md5($id));
 ?>
